@@ -38,7 +38,7 @@ This package is imported by:
 
 ## Testing Precise Code Navigation
 
-Open this repo in Sourcegraph and try:
+Open this repo in Sourcegraph and try the following:
 
 ### 1. Find Implementations (cross-repo)
 
