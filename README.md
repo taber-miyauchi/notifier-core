@@ -36,6 +36,16 @@ This package is imported by:
 - `notifier-email` - Implements the `Notifier` interface
 - `notifier-service` - Uses the interface and types to send notifications
 
-## Precise Code Navigation Demo
+## Testing Precise Code Navigation
 
-This repo is the **root** of the dependency chain. When you "Go to Definition" on `Message` or `Notifier` from other repos, you'll land here.
+Open this repo in Sourcegraph and try:
+
+### 1. Find Implementations (cross-repo)
+
+- In `notifier.go`, click on `Notifier` interface (line 8) → **Find Implementations**
+- → Jumps to `EmailNotifier.Send()` in `notifier-email/email.go`
+
+### 2. Find References (cross-repo)
+
+- In `message.go`, click on `Message` struct (line 14) → **Find References**
+- → Shows usages across all 3 repos: `notifier-core`, `notifier-email`, and `notifier-service`
