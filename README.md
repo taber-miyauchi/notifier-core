@@ -40,12 +40,31 @@ This package is imported by:
 
 Open this repo in Sourcegraph and try the following:
 
-### 1. Find Implementations (cross-repo)
+### 1. Find Implementations (cross-repo interface)
 
-- In `notifier.go`, click on `Notifier` interface (line 8) → **Find Implementations**
-- → Jumps to `EmailNotifier.Send()` in `notifier-email/email.go`
+Discover all implementations of an interface across separate repositories.
 
-### 2. Find References (cross-repo)
+- In `notifier.go`, click on `Send` method (line 8) → **Find Implementations**
+- → Highlights `Send` function in `notifier-email/email.go` (line 28)
 
-- In `message.go`, click on `Message` struct (line 14) → **Find References**
-- → Shows usages across all 3 repos: `notifier-core`, `notifier-email`, and `notifier-service`
+**Benefit:** Instantly see which repos provide concrete implementations of your interface—critical for understanding the full scope of a plugin or adapter pattern across a microservices architecture.
+
+### 2. Find References (cross-repo struct)
+
+Locate all usages of a shared type across multiple repositories.
+
+- In `message.go`, click on `Message` struct (line 13) → **Find References**
+- → Highlights `Message` (line 21) in `notifier-core/message.go`
+- → Highlights `Message` (line 8) in `notifier-core/notifier.go`
+- → Highlights `core.Message` (line 28) in `notifier-email/email.go`
+
+**Benefit:** Understand the impact radius of changing a shared data structure—see every repo and every call site that would be affected before making breaking changes.
+
+### 3. Find References (cross-repo function)
+
+Track usage of exported functions across repository boundaries.
+
+- In `message.go`, click on `NewMessage` func (line 21) → **Find References**
+- → Highlights `NewMessage` (line 38) in `notifier-service/main.go`
+
+**Benefit:** Identify all consumers of your API functions across the organization—essential for deprecation planning and understanding adoption.
